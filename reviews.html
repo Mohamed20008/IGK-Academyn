@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviews</title>
+    <link rel="website icon" href="logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div style="display: flex; justify-content: space-between;">
+
+        <a style="margin:30px;" href="index.html" class="test">Back</a>
+        <a style="margin:30px;" class="test" href="https://www.facebook.com/EnglishMidline">Rate us</a>
+</div>
+
+    
+<div class="flex">
+<div  class="slider">
+    <div class="slides">
+        <!-- Slide images -->
+        <div class="slide">
+            <img src="Reviews/review1.png" alt="Image 1">
+        </div>
+        <div class="slide">
+            <img src="Reviews/review2.png" alt="Image 2">
+        </div>
+        <div class="slide">
+            <img src="Reviews/review3.jpg" alt="Image 3">
+        </div>
+        <div class="slide">
+            <img src="Reviews/review4.png" alt="Image 4">
+        </div>
+    </div>
+
+    <!-- Manual navigation -->
+    <div class="navigation-manual">
+        <label for="radio1" class="manual-btn"></label>
+        <label for="radio2" class="manual-btn"></label>
+        <label for="radio3" class="manual-btn"></label>
+        <label for="radio4" class="manual-btn"></label>
+    </div>
+
+    <!-- Hidden radio buttons -->
+    <input type="radio" name="radio-btn" id="radio1" class="hidden-radio" checked>
+    <input type="radio" name="radio-btn" id="radio2" class="hidden-radio">
+    <input type="radio" name="radio-btn" id="radio3" class="hidden-radio">
+    <input type="radio" name="radio-btn" id="radio4" class="hidden-radio">
+</div>
+
+</div>
+
+<script>
+const slides = document.querySelector('.slides');
+const radioButtons = document.querySelectorAll('.hidden-radio');
+
+radioButtons.forEach((radio, index) => {
+    radio.addEventListener('click', () => {
+        slides.style.transform = `translateX(-${index * 25}%)`;
+    });
+});
+
+</script>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: linear-gradient(to bottom right ,rgb(118, 222, 109), transparent);
+}
+
+.flex {
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.slider {
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+}
+
+.slides {
+    display: flex;
+    width: 400%;
+    height: 100%;
+    transition: transform 0.6s ease;
+}
+
+.slide {
+    width: 25%;
+    flex-shrink: 0;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.navigation-manual {
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.manual-btn {
+    border: 2px solid #42d578;
+    padding: 5px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.4s;
+}
+
+.manual-btn:hover {
+    background: #42d578;
+}
+
+.hidden-radio {
+    display: none;
+}
+
+#radio1:checked ~ .slides {
+    transform: translateX(0);
+}
+
+#radio2:checked ~ .slides {
+    transform: translateX(-25%);
+}
+
+#radio3:checked ~ .slides {
+    transform: translateX(-50%);
+}
+
+#radio4:checked ~ .slides {
+    transform: translateX(-75%);
+}
+
+#radio1:checked ~ .navigation-manual label:nth-child(1),
+#radio2:checked ~ .navigation-manual label:nth-child(2),
+#radio3:checked ~ .navigation-manual label:nth-child(3),
+#radio4:checked ~ .navigation-manual label:nth-child(4) {
+    background: #42d578;
+}
+
+</style>
+
+</body>
+</html>
